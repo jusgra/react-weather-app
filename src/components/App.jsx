@@ -3,17 +3,18 @@ import Results from "./Results";
 
 function App() {
   const [resultsState, setResults] = useState({ temp: "", time: "", city: "", timezone: "0" });
-  const [inputState, setInput] = useState({ city: "", units: "metric" });
+  const [inputState, setInput] = useState({ city: "", units: "metric", unitName: "C" });
   const shouldEffect = useRef(false);
 
-  async function buttonClick(e) {
-    console.log("buttoned");
+  async function submitClick(e) {
+    console.log("request sent to API");
     e.preventDefault();
-    setResults({ temp: "", time: "", city: "" });
+
     const url = urlConstruct(inputState.city, inputState.units);
     let response = await fetch(url);
 
     if (response.ok) {
+      setResults({ temp: "", time: "", city: "" });
       response = await response.json();
       const resTemp = response.list[0].main.temp;
       const resCity = response.city.name;
@@ -27,10 +28,37 @@ function App() {
         city: resCity,
         timezone: resTimezone,
       });
-    } else console.log("Response ERROR");
+    } else {
+      console.log("inside response error -" + shouldEffect.current);
+      //if (shouldEffect.current) shouldEffect.current = !shouldEffect.current;
+      console.log("Response ERROR");
+    }
+  }
+
+  function handleTextChange(e) {
+    const { name, value } = e.target;
+    setInput((prevInput) => {
+      return {
+        ...prevInput,
+        [name]: value,
+      };
+    });
+  }
+
+  function unitClick() {
+    if (inputState.unitName === "C") {
+      setInput((prevInput) => {
+        return { ...prevInput, units: "imperial", unitName: "F" };
+      });
+    } else {
+      setInput((prevInput) => {
+        return { ...prevInput, units: "metric", unitName: "C" };
+      });
+    }
   }
 
   useEffect(() => {
+    console.log("inside useEffect - " + shouldEffect.current);
     if (!shouldEffect.current) {
       return;
     }
@@ -47,38 +75,36 @@ function App() {
     };
   });
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setInput((prevInput) => {
-      return {
-        ...prevInput,
-        [name]: value,
-      };
-    });
-  }
-
   return (
     <>
       {/* <div className="bg-image"></div> */}
-      <Results className="results" city={resultsState.city} temp={resultsState.temp} time={resultsState.time} />
 
-      <form onSubmit={buttonClick}>
+      <form onSubmit={submitClick}>
         <input
-          onChange={handleChange}
-          autocomplete="off"
+          onChange={handleTextChange}
+          autoComplete="off"
           value={inputState.city}
           type="text"
           name="city"
           placeholder="City name"
         ></input>
         <div className="inputs">
-          <select onChange={handleChange} name="units">
-            <option value="metric">&deg;C</option>
-            <option value="imperial">&deg;F</option>
-          </select>
-          <button type="submit">Find</button>
+          <button className="unitButton" type="button" onClick={unitClick}>
+            &deg;{inputState.unitName}
+          </button>
+          <button className="submitButton" type="submit">
+            Find
+          </button>
         </div>
       </form>
+
+      <Results
+        className="results"
+        city={resultsState.city}
+        temp={resultsState.temp}
+        unit={inputState.unitName}
+        time={resultsState.time}
+      />
     </>
   );
 }
