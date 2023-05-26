@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Results from "./Results";
 
 function App() {
-  const [resultsState, setResults] = useState({ temp: "", time: "", city: "", timezone: "0" });
+  const [resultsState, setResults] = useState({ city: "", temp: "", time: "", timezone: "0", units: "" });
   const [inputState, setInput] = useState({ city: "", units: "metric", unitName: "C" });
   const shouldEffect = useRef(false);
 
@@ -19,6 +19,7 @@ function App() {
       const resTemp = response.list[0].main.temp;
       const resCity = response.city.name;
       const resTimezone = response.city.timezone;
+      const resUnit = inputState.unitName;
 
       const timeSearch = getLocalTime(response.city.timezone);
       if (!shouldEffect.current) shouldEffect.current = !shouldEffect.current;
@@ -27,6 +28,7 @@ function App() {
         time: timeSearch,
         city: resCity,
         timezone: resTimezone,
+        units: resUnit,
       });
     } else {
       console.log("inside response error -" + shouldEffect.current);
@@ -58,11 +60,11 @@ function App() {
   }
 
   useEffect(() => {
-    console.log("inside useEffect - " + shouldEffect.current);
     if (!shouldEffect.current) {
       return;
     }
     const int = setInterval(() => {
+      console.log("inside interval");
       setResults((prevRes) => {
         return {
           ...prevRes,
@@ -74,6 +76,28 @@ function App() {
       clearInterval(int);
     };
   });
+
+  // useEffect(() => {
+  //   if (!shouldEffect.current) {
+  //     return;
+  //   }
+  //   const int = runInterval();
+  //   return () => {
+  //     clearInterval(int);
+  //   };
+  // });
+
+  // function runInterval() {
+  //   setInterval(() => {
+  //     console.log("inside interval");
+  //     setResults((prevRes) => {
+  //       return {
+  //         ...prevRes,
+  //         time: getLocalTime(resultsState.timezone),
+  //       };
+  //     });
+  //   }, 1000);
+  // }
 
   return (
     <>
@@ -102,7 +126,7 @@ function App() {
         className="results"
         city={resultsState.city}
         temp={resultsState.temp}
-        unit={inputState.unitName}
+        unit={resultsState.units}
         time={resultsState.time}
       />
     </>
