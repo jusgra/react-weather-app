@@ -1,18 +1,28 @@
 import React, { useEffect, useState, useRef } from "react";
 import Results from "./Results";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [resultsState, setResults] = useState({ city: "", temp: "", time: "", timezone: "0", units: "" });
   const [inputState, setInput] = useState({ city: "", units: "metric", unitName: "C" });
   const shouldEffect = useRef(false);
+  const toastOption = {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false,
+    progress: undefined,
+    theme: "colored",
+  };
 
   async function submitClick(e) {
-    console.log("request sent to API");
     e.preventDefault();
 
     const url = urlConstruct(inputState.city, inputState.units);
     let response = await fetch(url);
-
     if (response.ok) {
       setResults({ temp: "", time: "", city: "" });
       response = await response.json();
@@ -30,10 +40,12 @@ function App() {
         timezone: resTimezone,
         units: resUnit,
       });
-    } else {
-      console.log("inside response error -" + shouldEffect.current);
-      //if (shouldEffect.current) shouldEffect.current = !shouldEffect.current;
-      console.log("Response ERROR");
+    } else if (response.status === 400) {
+      console.log(response.status);
+      toast.warning("Please provide a city name", toastOption);
+    } else if (response.status === 404) {
+      console.log(response.status);
+      toast.error("Sorry, we couldn't find that city 😞", toastOption);
     }
   }
 
@@ -64,7 +76,6 @@ function App() {
       return;
     }
     const int = setInterval(() => {
-      console.log("inside interval");
       setResults((prevRes) => {
         return {
           ...prevRes,
@@ -77,32 +88,10 @@ function App() {
     };
   });
 
-  // useEffect(() => {
-  //   if (!shouldEffect.current) {
-  //     return;
-  //   }
-  //   const int = runInterval();
-  //   return () => {
-  //     clearInterval(int);
-  //   };
-  // });
-
-  // function runInterval() {
-  //   setInterval(() => {
-  //     console.log("inside interval");
-  //     setResults((prevRes) => {
-  //       return {
-  //         ...prevRes,
-  //         time: getLocalTime(resultsState.timezone),
-  //       };
-  //     });
-  //   }, 1000);
-  // }
-
   return (
     <>
       {/* <div className="bg-image"></div> */}
-
+      <ToastContainer />
       <form onSubmit={submitClick}>
         <input
           onChange={handleTextChange}
@@ -138,15 +127,15 @@ function getLocalTime(timezone) {
   const offSet = timezone / 3600;
   const localHours = dateNow.getUTCHours() + offSet;
   dateNow.setHours(localHours);
-  return dateNow.toLocaleTimeString("en-GB");
+  return dateNow.toLocaleTimeString();
+  //return dateNow.toLocaleTimeString("en-GB");
 }
 
 function urlConstruct(city, unit) {
   const apiKey = process.env.REACT_APP_API_KEY;
   let urlFinal = "http://api.openweathermap.org/data/2.5/forecast?q=";
+  urlFinal += city + "&appid=" + apiKey + "&units=" + unit;
 
-  urlFinal += city;
-  urlFinal += "&appid=" + apiKey + "&units=" + unit;
   return urlFinal;
 }
 

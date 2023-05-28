@@ -1,21 +1,33 @@
 body,
 html {
     font-family: Montserrat, sans-serif;
-    background-color: rgb(99, 170, 99);
+    background-color: rgb(110, 184, 135);
     /* background-size: cover;
     background-image: url("https://images.pexels.com/photos/2114014/pexels-photo-2114014.jpeg?cs=srgb&dl=pexels-magda-ehlers-2114014.jpg&fm=jpg"); */
 }
 
+/* .bg-image {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    filter: blur(4px);
+    z-index: -1;
+    background-size: cover;
+    background-image: url("https://images.pexels.com/photos/2114014/pexels-photo-2114014.jpeg?cs=srgb&dl=pexels-magda-ehlers-2114014.jpg&fm=jpg");
+
+} */
 
 
-button {
+
+.unitButton,
+.submitButton {
     width: 497.5px;
     height: 50px;
     margin: 5px;
     font-size: 2rem;
     text-align: center;
     background-color: white;
-    /* background-color: rgba(223, 223, 223, 0.329); */
+    background-color: rgba(223, 223, 223, 0.329);
     font-family: Montserrat, sans-serif;
     border: none;
     padding: 0;
@@ -35,11 +47,9 @@ button {
     border-radius: 0 0 15px 0;
 }
 
-form {
-    margin-top: 3rem;
-}
 
 input {
+    margin-top: 500px;
     font-family: Montserrat, sans-serif;
     color: rgba(250, 53, 53, 0.671);
     /* caret-color: transparent; */
@@ -54,7 +64,7 @@ input {
     border: none;
     display: block;
     background-color: white;
-    /* background-color: rgba(204, 204, 204, 0.178); */
+    background-color: rgba(204, 204, 204, 0.178);
 }
 
 input:focus {
@@ -88,6 +98,11 @@ p {
 .timeP {
     display: block;
     margin: auto;
+    width: 600px;
     font-family: 'Space Mono', monospace;
     font-size: 5rem;
+}
+
+.Toastify__toast--error {
+    width: 350px;
 }
