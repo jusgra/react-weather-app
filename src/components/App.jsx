@@ -7,15 +7,15 @@ function App() {
   const [resultsState, setResults] = useState({ city: "", temp: "", time: "", timezone: "0", units: "" });
   const [inputState, setInput] = useState({ city: "", units: "metric", unitName: "C" });
   const shouldEffect = useRef(false);
-  const toastOption = {
+  const toastOptions = {
     position: "top-center",
     autoClose: 2000,
-    hideProgressBar: false,
+    hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: false,
     draggable: false,
     progress: undefined,
-    theme: "colored",
+    theme: "light",
   };
 
   async function submitClick(e) {
@@ -42,10 +42,10 @@ function App() {
       });
     } else if (response.status === 400) {
       console.log(response.status);
-      toast.warning("Please provide a city name", toastOption);
+      toast.warn("Please provide a city name 🏢", toastOptions);
     } else if (response.status === 404) {
       console.log(response.status);
-      toast.error("Sorry, we couldn't find that city 😞", toastOption);
+      toast.error("Sorry, we couldn't find that city 😥", toastOptions);
     }
   }
 
@@ -86,38 +86,33 @@ function App() {
     return () => {
       clearInterval(int);
     };
-  });
+  }, [resultsState]);
 
   return (
     <>
-      {/* <div className="bg-image"></div> */}
-      <ToastContainer />
-      <form onSubmit={submitClick}>
-        <input
-          onChange={handleTextChange}
-          autoComplete="off"
-          value={inputState.city}
-          type="text"
-          name="city"
-          placeholder="City name"
-        ></input>
-        <div className="inputs">
-          <button className="unitButton" type="button" onClick={unitClick}>
-            &deg;{inputState.unitName}
-          </button>
-          <button className="submitButton" type="submit">
-            Find
-          </button>
-        </div>
-      </form>
-
-      <Results
-        className="results"
-        city={resultsState.city}
-        temp={resultsState.temp}
-        unit={resultsState.units}
-        time={resultsState.time}
-      />
+      <div className="inputs-container">
+        <div className="bg-image"></div>
+        <ToastContainer />
+        <form onSubmit={submitClick}>
+          <input
+            onChange={handleTextChange}
+            autoComplete="off"
+            value={inputState.city}
+            type="text"
+            name="city"
+            placeholder="City name"
+          ></input>
+          <div className="inputs">
+            <button className="unit-button" type="button" onClick={unitClick}>
+              &deg;{inputState.unitName}
+            </button>
+            <button className="submit-button" type="submit">
+              Find
+            </button>
+          </div>
+        </form>
+      </div>
+      <Results city={resultsState.city} temp={resultsState.temp} unit={resultsState.units} time={resultsState.time} />
     </>
   );
 }

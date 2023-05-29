@@ -1,14 +1,18 @@
 import React from "react";
 
+function asibdjads() {
+  console.log("changed");
+}
+
 function Results(props) {
-  //props = { city: "asdasd", temp: 25, time: "20:20:20" };
+  props = { city: "asdasd", temp: 25, unit: "C", time: "14:59:23 PM" };
   return (
     <>
-      <div className="outputTop">
-        <p className="cityP">{props.city}</p>
-        <p className="tempP">{props.temp && props.temp + "º" + props.unit}</p>
+      <div className="results-top-layer">
+        <p className="city-parg">{props.city}</p>
+        <p className="temp-parg">{props.temp && props.temp + "º" + props.unit}</p>
       </div>
-      <p className="timeP">{props.time}</p>
+      <p className="time-parg">{props.time}</p>
     </>
   );
 }
