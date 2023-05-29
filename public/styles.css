@@ -1,75 +1,104 @@
-body,
-html {
-    margin: 0;
+input {
+    background-color: #9db2bf1f;
+    border: none;
+    border-radius: 15px 15px 0 0;
+    color: #DDE6ED;
+    display: block;
     font-family: Montserrat, sans-serif;
+    font-size: 4rem;
     font-weight: 400;
+    height: 100px;
+    margin: auto;
+    text-align: center;
+    transition: 0.5s;
+    width: 1000px;
+}
+
+p {
+    color: #27374db7;
+    font-family: 'Red Hat Mono', monospace;
+    text-align: center;
+    /* text-shadow: 4px 10px 10px #00000069; */
+    margin: 20px;
+    width: 500px;
+}
+
+button:hover {
+    background-color: #27374d;
+}
+
+button:focus {
+    outline: solid 1px white;
+}
+
+input:focus {
+    background-color: #9db2bf80;
+    outline: none;
+}
+
+input::placeholder {
+    color: #dde6ed91;
+    font-weight: 100;
+}
+
+.bg-image {
     background-size: cover;
     background-image: url("https://images.pexels.com/photos/2114014/pexels-photo-2114014.jpeg?cs=srgb&dl=pexels-magda-ehlers-2114014.jpg&fm=jpg");
+    filter: blur(4px);
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    z-index: -1;
+}
+
+.inputs-container {
+    margin-top: 50px;
 }
 
 .inputs {
     text-align: center;
 }
 
-button,
-select {
-    width: 500px;
+
+.unit-button,
+.submit-button {
+    background-color: #27374d86;
+    border: none;
+    color: #DDE6ED;
+    font-family: Montserrat, sans-serif;
+    font-size: 2rem;
     height: 50px;
     margin: 5px;
-    font-size: 2rem;
-
-    text-align: center;
-    background-color: rgba(204, 204, 204, 0.178);
-    font-family: Montserrat, sans-serif;
-    font-weight: light;
-
+    transition: 0.3s;
+    width: 497.5px;
 }
 
-select {
-    margin-right: 0;
+.unit-button {
     border-radius: 0 0 0 15px;
-    border: none;
-
+    margin-right: 0;
 }
 
-select option {
-    background-color: rgba(204, 204, 204, 0.178);
-}
-
-button {
+.submit-button {
     border-radius: 0 0 15px 0;
-    border: none;
-    padding: 0;
 }
 
+.results-top-layer {
+    display: flex;
+    font-size: 6rem;
+    justify-content: space-evenly;
+    margin-top: 4rem;
+}
 
-input {
-    font-family: Montserrat, sans-serif;
-    color: rgba(250, 53, 53, 0.671);
-    /* caret-color: transparent; */
-    width: 1000px;
-    margin: auto;
-    font-weight: 400;
-    font-size: 5rem;
-    text-align: center;
-    border-radius: 15px 15px 0 0;
-    border: none;
+.time-parg {
     display: block;
-    /* background-color: white; */
-    background-color: rgba(204, 204, 204, 0.178);
-}
-
-input:focus {
-    outline: none;
-
-}
-
-input::placeholder {
-    color: rgba(204, 204, 204, 0.651);
-    font-weight: 100;
-}
-
-.results {
+    color: #27374db7;
+    font-family: 'Red Hat Mono', monospace;
+    font-size: 5rem;
     margin: auto;
+    width: 600px;
+}
 
+.Toastify__toast--error {
+    width: 350px;
 }
