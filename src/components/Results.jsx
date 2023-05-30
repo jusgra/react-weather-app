@@ -1,11 +1,7 @@
 import React from "react";
 
-function asibdjads() {
-  console.log("changed");
-}
-
 function Results(props) {
-  props = { city: "asdasd", temp: 25, unit: "C", time: "14:59:23 PM" };
+  //props = { city: "asdasd", temp: 25, unit: "C", time: "14:59:23 PM" };
   return (
     <>
       <div className="results-top-layer">

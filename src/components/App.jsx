@@ -93,16 +93,18 @@ function App() {
       <div className="inputs-container">
         <div className="bg-image"></div>
         <ToastContainer />
+
         <form onSubmit={submitClick}>
           <input
             onChange={handleTextChange}
             autoComplete="off"
+            spellCheck="false"
             value={inputState.city}
             type="text"
             name="city"
             placeholder="City name"
-          ></input>
-          <div className="inputs">
+          />
+          <div className="button-inputs">
             <button className="unit-button" type="button" onClick={unitClick}>
               &deg;{inputState.unitName}
             </button>
