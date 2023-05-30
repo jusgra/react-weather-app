@@ -114,7 +114,9 @@ function App() {
           </div>
         </form>
       </div>
-      <Results city={resultsState.city} temp={resultsState.temp} unit={resultsState.units} time={resultsState.time} />
+      {resultsState.temp && (
+        <Results city={resultsState.city} temp={resultsState.temp} unit={resultsState.units} time={resultsState.time} />
+      )}
     </>
   );
 }

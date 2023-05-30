@@ -52,15 +52,13 @@ input::placeholder {
     z-index: -1;
 }
 
-.button-inputs {
-    text-align: center;
-}
-
 .inputs-container {
     margin-top: 50px;
 }
 
-
+.button-inputs {
+    text-align: center;
+}
 
 
 .unit-button,
