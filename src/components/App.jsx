@@ -114,9 +114,10 @@ function App() {
           </div>
         </form>
       </div>
-      {resultsState.temp && (
+      <Results city={resultsState.city} temp={resultsState.temp} unit={resultsState.units} time={resultsState.time} />
+      {/* {resultsState.temp && (
         <Results city={resultsState.city} temp={resultsState.temp} unit={resultsState.units} time={resultsState.time} />
-      )}
+      )} */}
     </>
   );
 }

@@ -1,3 +1,7 @@
+body {
+    font-family: sans-serif;
+}
+
 input {
     background-color: #9db2bf1f;
     border: none;
@@ -16,11 +20,9 @@ input {
 
 p {
     color: #27374db7;
-    font-family: 'Red Hat Mono', monospace;
+    /* font-family: Montserrat; */
     text-align: center;
     /* text-shadow: 4px 10px 10px #00000069; */
-    margin: 20px;
-    width: 500px;
 }
 
 button:hover {
@@ -83,10 +85,7 @@ input::placeholder {
     border-radius: 0 0 15px 0;
 }
 
-.results-top-layer {
-    display: flex;
-    font-size: 6rem;
-    justify-content: space-evenly;
+.results-top {
     margin-top: 4rem;
 }
 
@@ -101,4 +100,50 @@ input::placeholder {
 
 .Toastify__toast--error {
     width: 350px;
+}
+
+
+.result-container {
+    font-family: Montserrat;
+}
+
+.wind-box {
+
+    width: 30%;
+    font-size: 4rem;
+    margin-left: 10%;
+
+}
+
+.wind-box p {
+    /* outline: 1px solid black; */
+    background-color: #27374d33;
+    width: 100%;
+    margin: 0;
+}
+
+/* .wind-box>div:nth-child(odd) {
+    background-color: #27374d33;
+} */
+
+.wind-speed {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.wind-speed div {
+    margin: 0;
+    width: 50%;
+    padding: 0;
+    display: inline-block;
+    /* background-color: #27374d33; */
+}
+
+.wind-speed p {
+    display: inline-block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
 }
