@@ -1,14 +1,16 @@
 import React from "react";
 import Wind from "./Wind";
 import Temp from "./Temp";
+import Condition from "./Condition";
 
 function Results(props) {
   props = { city: "asdasd", temp: 25, unit: "C", time: "14:59:23 PM" };
   return (
     <div className="result-container">
       <div className="results-top">
+        {/* <Wind /> */}
         <Wind />
-        {/* <Temp /> */}
+        <Temp />
         {/* <Condition /> */}
       </div>
       {/* <div className="results-bottom">

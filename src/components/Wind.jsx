@@ -3,19 +3,19 @@ import React from "react";
 function Wind() {
   return (
     <div className="wind-box">
-      <div>
-        <p>Wind</p>
+      <div className="wind-title">
+        <p className="info-title">wind AA</p>
       </div>
       <div className="wind-speed">
         <div>
-          <p>asd</p>
+          <p>iujn</p>
         </div>
         <div>
-          <p>asd</p>
+          <p>a</p>
         </div>
       </div>
       <div className="wind-dir">
-        <p>NNE</p>
+        <p>i</p>
       </div>
     </div>
   );
