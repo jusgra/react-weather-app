@@ -1,15 +1,22 @@
 import React from "react";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
-export default function Condition() {
+export default function Condition(props) {
   return (
-    <div className="condition-box">
-      <div>
-        <p className="info-title">condition AA</p>
+    <>
+      <div className="condition-title">
+        <p className="info-title">
+          condition <i className="bi bi-globe2"></i>
+        </p>
       </div>
-      <div>
-        <p>cloudy</p>
-        <p>image</p>
+      <div className="condition-condition">
+        <p>{props.condDesc}</p>
       </div>
-    </div>
+      <div className="condition-icon">
+        <p>
+          <i className="bi bi-cloud-drizzle"></i>
+        </p>
+      </div>
+    </>
   );
 }
