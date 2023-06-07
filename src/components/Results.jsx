@@ -10,8 +10,12 @@ function Results(props) {
     <div className="results-top">
       <div className="grid-container">
         <Wind speed={props.windSpeed} dir={props.windDirection} units={props.units} />
-        <Temp temp={props.temp} feels={props.feelsLike} />
-        <Condition condDesc={props.conditionDesc} />
+        <Temp temp={props.temp} feels={props.feelsLike} units={props.units} />
+        <Condition
+          mainCondition={props.mainCondition}
+          conditionDesc={props.conditionDesc}
+          conditionIcon={props.conditionIcon}
+        />
         {/* <div className="results-bottom">
         <p className="time-parg">{props.time}</p>
         <p className="city-parg">{props.city}</p>

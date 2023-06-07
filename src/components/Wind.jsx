@@ -1,39 +1,39 @@
 import React from "react";
 
 function Wind(props) {
-  const calculatedSpeed = {
+  const convertedSpeed = {
     lowerSpeed: lowerUnitSpeed(props.speed),
     upperSpeed: lowerUnitSpeed(props.speed * 3.6),
   };
 
-  function unitImperial() {
-    return (
-      <div className="wind-speed-3">
-        <p>{calculatedSpeed.lowerSpeed}</p>
-        <p className="unit-class">m/ph</p>
-      </div>
-    );
-  }
-
   function unitMetric() {
     return (
       <>
-        <div className="wind-speed-1">
-          <p>{calculatedSpeed.lowerSpeed}</p>
-          <p className="unit-class">m/s</p>
+        <div className="wind-speed-1-cell">
+          <p className="wind-numeral">{convertedSpeed.lowerSpeed}</p>
+          <p className="wind-text">m/s</p>
         </div>
-        <div className="wind-speed-2">
-          <p>{calculatedSpeed.upperSpeed}</p>
-          <p className="unit-class">km/h</p>
+        <div className="wind-speed-2-cell">
+          <p className="wind-numeral">{convertedSpeed.upperSpeed}</p>
+          <p className="wind-text">km/h</p>
         </div>
       </>
+    );
+  }
+
+  function unitImperial() {
+    return (
+      <div className="wind-speed-3-cell">
+        <p className="wind-numeral">{convertedSpeed.lowerSpeed}</p>
+        <p className="wind-text">m/ph</p>
+      </div>
     );
   }
 
   function arrowDisplay(degree) {
     return (
       <>
-        <p style={{ transform: "rotate(" + degree + "deg)" }} className="wind-arrow">
+        <p className="wind-numeral" style={{ transform: "rotate(" + degree + "deg)" }}>
           <i className="bi bi-arrow-up" />
         </p>
       </>
@@ -42,14 +42,17 @@ function Wind(props) {
 
   return (
     <>
-      <div className="wind-title">
+      <div className="wind-title-cell">
         <p className="info-title">
           wind <i className="bi bi-wind"></i>
         </p>
       </div>
       {props.units === "metric" ? unitMetric() : unitImperial()}
-      <div className="wind-dir">
-        <p>{windDirection(props.dir)}</p>
+      <div className="wind-dir-text-cell">
+        <p className="wind-text">wind direction</p>
+      </div>
+      <div className="wind-dir-info-cell">
+        <p className="wind-numeral">{windDirection(props.dir)}</p>
         {arrowDisplay(props.dir + 180)}
       </div>
     </>
@@ -57,34 +60,34 @@ function Wind(props) {
 }
 
 function lowerUnitSpeed(speed) {
-  const calculated = Math.round(speed * 10) / 10;
+  const calculated = (Math.round(speed * 10) / 10).toFixed(1);
   return calculated;
 }
 
 function windDirection(degree) {
   console.log("degree from api - " + degree);
   const directions = [
-    "n",
-    "n/ne",
-    "ne",
-    "e/ne",
-    "e",
-    "e/se",
-    "se",
-    "s/se",
-    "s",
-    "s/sw",
-    "sw",
-    "w/sw",
-    "w",
-    "w/nw",
-    "nw",
-    "n/nw",
-    "n",
+    "N",
+    "N/NE",
+    "NE",
+    "E/NE",
+    "E",
+    "E/SE",
+    "SE",
+    "S/SE",
+    "S",
+    "S/SW",
+    "SW",
+    "W/SW",
+    "W",
+    "W/NW",
+    "NW",
+    "N/NW",
+    "N",
   ];
   //console.log(directions[0]);
   const windSectionSplitDegree = 11.25;
-  degree = 85;
+  //degree = 85;
   var loopCount = 0;
   for (var i = 0; i <= 360; i += windSectionSplitDegree) {
     if (i >= degree) return directions[Math.floor(loopCount)];

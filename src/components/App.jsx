@@ -29,13 +29,6 @@ function App() {
     theme: "light",
   };
 
-  // +feelslike - list[0].main.feels_like
-  // +main condition - list[0].weather[0].main
-  // +condition desc - list[0].weather[0].description
-  // +wind speed m/s - list[0].wind.speed
-  // +cond icon - list[0].weather[0].icon
-  // +wind direct - list[0].wind.deg
-
   async function submitClick(e) {
     e.preventDefault();
 
@@ -66,7 +59,6 @@ function App() {
         units: responseObject.units,
         windSpeed: responseObject.windSpeed,
         windDirection: responseObject.windDirection,
-        // temp: Math.floor(responseObject.temp),
         temp: responseObject.temp,
         feelsLike: responseObject.feelsLike,
         mainCondition: responseObject.mainCondition,
@@ -147,7 +139,18 @@ function App() {
           </div>
         </form>
       </div>
-      {resultsState.city && (
+      <Results
+        city="a"
+        units="metric"
+        windSpeed={1.0}
+        windDirection={165}
+        temp={-19.5985}
+        feelsLike={-16.19554}
+        mainCondition="a"
+        conditionDesc="broken clouds"
+        conditionIcon="02d"
+      />
+      {/* {resultsState.city && (
         <Results
           city={resultsState.city}
           units={resultsState.units}
@@ -158,13 +161,7 @@ function App() {
           mainCondition={resultsState.mainCondition}
           conditionDesc={resultsState.conditionDesc}
           conditionIcon={resultsState.conditionIcon}
-
-          // time={resultsState.time}
         />
-      )}
-
-      {/* {resultsState.temp && (
-        <Results city={resultsState.city} temp={resultsState.temp} unit={resultsState.units} time={resultsState.time} />
       )} */}
     </>
   );
