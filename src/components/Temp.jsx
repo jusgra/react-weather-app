@@ -2,7 +2,7 @@ import React from "react";
 
 function Temp(props) {
   function getUnits(system) {
-    console.log(system);
+    // console.log(system);
     if (system === "metric") {
       return "ºC";
     } else {

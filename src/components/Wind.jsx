@@ -65,7 +65,7 @@ function lowerUnitSpeed(speed) {
 }
 
 function windDirection(degree) {
-  console.log("degree from api - " + degree);
+  // console.log("degree from api - " + degree);
   const directions = [
     "N",
     "N/NE",

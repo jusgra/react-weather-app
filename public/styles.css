@@ -1,22 +1,54 @@
+form {
+    display: flex;
+    justify-content: center;
+}
+
+.grid-input-container {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    width: 50%;
+    gap: 5px;
+    font-family: Montserrat, sans-serif;
+}
+
 input {
     background-color: #9db2bf1f;
     border: none;
     border-radius: 15px 15px 0 0;
     color: #DDE6ED;
-    display: block;
-    font-family: Montserrat, sans-serif;
     font-size: 4rem;
     font-weight: 400;
     height: 100px;
-    margin: auto;
     text-align: center;
     transition: 0.5s;
-    width: 1000px;
+    width: 100%;
+    grid-column: span 2;
+}
+
+.unit-button,
+.submit-button {
+    background-color: #27374d86;
+    border: none;
+    color: #DDE6ED;
+    font-size: 2rem;
+    height: 50%;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.unit-button {
+    border-radius: 0 0 0 15px;
+}
+
+.submit-button {
+    border-radius: 0 0 15px 0;
 }
 
 p {
     color: #27374db7;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 button:hover {
@@ -36,6 +68,9 @@ input::placeholder {
     color: #dde6ed91;
     font-weight: 100;
 }
+
+
+
 
 .Toastify__toast--error {
     width: 350px;
@@ -57,32 +92,12 @@ input::placeholder {
     margin-top: 50px;
 }
 
-.button-inputs {
-    text-align: center;
-}
 
 
-.unit-button,
-.submit-button {
-    background-color: #27374d86;
-    border: none;
-    color: #DDE6ED;
-    font-family: Montserrat, sans-serif;
-    font-size: 2rem;
-    height: 50px;
-    margin: 5px;
-    transition: 0.3s;
-    width: 497.5px;
-}
 
-.unit-button {
-    border-radius: 0 0 0 15px;
-    margin-right: 0;
-}
 
-.submit-button {
-    border-radius: 0 0 15px 0;
-}
+
+
 
 .results-top {
     display: flex;
@@ -92,8 +107,8 @@ input::placeholder {
 .grid-container {
     font-family: 'Major Mono Display', monospace;
     margin-top: 2rem;
-    width: 70%;
-    height: 500px;
+    width: 90%;
+    height: 400px;
     display: grid;
     grid-template-rows: 1fr 0.5fr 0.5fr 0.4fr 0.6fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -112,10 +127,7 @@ input::placeholder {
     background-color: #dde6eda8;
 }
 
-.grid-container p {
-    margin: 0;
-    padding: 0;
-}
+.grid-container p {}
 
 .info-title {
     font-size: 3rem;
@@ -219,4 +231,42 @@ input::placeholder {
     grid-area: 3/9/6/13;
     border-radius: 0 0 20px 0;
     font-size: 9rem;
+}
+
+/* -------------- CLOCK -------------- */
+
+.results-bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.grid-container-clock {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    width: 70%;
+    height: 200px;
+    gap: 5px;
+
+}
+
+.grid-container-clock>div {
+    background-color: #dde6ed41;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+
+.clock-time {
+    grid-column: span 2;
+    border-radius: 20px 20px 0 0;
+}
+
+.clock-city {
+    border-radius: 0 0 0 20px;
+}
+
+.clock-date {
+    border-radius: 0 0 20px 0;
 }

@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import Results from "./Results";
+import Clock from "./Clock";
 import { ToastContainer, toast } from "react-toastify";
 
 function App() {
   const [resultsState, setResults] = useState({
-    timezone: 0,
+    timezone: -1,
     time: "",
+    date: -1,
     city: "",
     units: "",
     windSpeed: 0,
@@ -39,6 +41,7 @@ function App() {
       response = await response.json();
       const responseObject = {
         timezone: response.city.timezone,
+        date: response.city.sunset,
         city: response.city.name,
         units: inputState.units,
         windSpeed: response.list[0].wind.speed,
@@ -55,6 +58,7 @@ function App() {
       setResults({
         timezone: responseObject.timezone,
         time: timeSearch,
+        date: responseObject.date,
         city: responseObject.city,
         units: responseObject.units,
         windSpeed: responseObject.windSpeed,
@@ -96,22 +100,22 @@ function App() {
     }
   }
 
-  // useEffect(() => {
-  //   if (!shouldEffect.current) {
-  //     return;
-  //   }
-  //   const int = setInterval(() => {
-  //     setResults((prevRes) => {
-  //       return {
-  //         ...prevRes,
-  //         time: getLocalTime(resultsState.timezone),
-  //       };
-  //     });
-  //   }, 1000);
-  //   return () => {
-  //     clearInterval(int);
-  //   };
-  // }, [resultsState]);
+  useEffect(() => {
+    if (!shouldEffect.current) {
+      return;
+    }
+    const int = setInterval(() => {
+      setResults((prevRes) => {
+        return {
+          ...prevRes,
+          time: getLocalTime(resultsState.timezone),
+        };
+      });
+    }, 1000);
+    return () => {
+      clearInterval(int);
+    };
+  }, [resultsState]);
 
   return (
     <>
@@ -120,18 +124,18 @@ function App() {
         <ToastContainer />
 
         <form onSubmit={submitClick}>
-          <input
-            onChange={handleTextChange}
-            autoComplete="off"
-            spellCheck="false"
-            value={inputState.city}
-            type="text"
-            name="city"
-            placeholder="City name"
-          />
-          <div className="button-inputs">
+          <div className="grid-input-container">
+            <input
+              onChange={handleTextChange}
+              autoComplete="off"
+              spellCheck="false"
+              value={inputState.city}
+              type="text"
+              name="city"
+              placeholder="City name"
+            />
             <button className="unit-button" type="button" onClick={unitClick}>
-              &deg;{inputState.unitName}
+              º{inputState.unitName}
             </button>
             <button className="submit-button" type="submit">
               Find
@@ -150,6 +154,7 @@ function App() {
         conditionDesc="broken clouds"
         conditionIcon="02d"
       />
+      <Clock time={resultsState.time} city={resultsState.city} date={resultsState.date} />
       {/* {resultsState.city && (
         <Results
           city={resultsState.city}

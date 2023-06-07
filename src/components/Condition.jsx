@@ -26,13 +26,13 @@ export default function Condition(props) {
 }
 
 function getConditionIcon(icon) {
-  console.log("icon- " + icon);
+  // console.log("icon- " + icon);
   // return conditions.clearSky.icon;
   const found = conditions.find((cond) => {
     //console.log(cond.icon);
     return cond.icon === icon;
   });
-  console.log(found);
+  // console.log(found);
   // console.log(found);
   //console.log("found - " + found[0].number);
   // return found.class;
