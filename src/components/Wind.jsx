@@ -48,12 +48,12 @@ function Wind(props) {
         </p>
       </div>
       {props.units === "metric" ? unitMetric() : unitImperial()}
-      <div className="wind-dir-text-cell">
+      <div className="wind-dir-cell">
         <p className="wind-text">wind direction</p>
-      </div>
-      <div className="wind-dir-info-cell">
-        <p className="wind-numeral">{windDirection(props.dir)}</p>
-        {arrowDisplay(props.dir + 180)}
+        <div className="wind-directions">
+          <p className="wind-numeral">{windDirection(props.dir)}</p>
+          {arrowDisplay(props.dir + 180)}
+        </div>
       </div>
     </>
   );

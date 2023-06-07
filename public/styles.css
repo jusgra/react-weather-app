@@ -144,15 +144,20 @@ input::placeholder {
     flex-direction: column;
 }
 
-.wind-dir-text-cell {
-    grid-area: 4/1/5/5;
-    margin-bottom: -5px;
+.wind-dir-cell {
+    grid-area: 4/1/6/5;
+    display: inline-block !important;
+    border-radius: 0 0 0 20px;
 }
 
-.wind-dir-info-cell {
-    grid-area: 5/1/6/5;
-    border-radius: 0 0 0 20px;
-    justify-content: space-evenly !important;
+.wind-dir-cell>p {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.wind-directions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .wind-text {
@@ -207,7 +212,7 @@ input::placeholder {
 
 .condition-condition-cell {
     grid-area: 2/9/3/13;
-    font-size: 3rem;
+    font-size: 1.5rem;
 }
 
 .condition-icon-cell {
