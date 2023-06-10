@@ -8,10 +8,10 @@ export default function Clock(props) {
           <p>{props.time}</p>
         </div>
         <div className="clock-city">
-          <p>{props.city}</p>
+          <p>{props.city.toLowerCase()}</p>
         </div>
         <div className="clock-date">
-          <p>{converToDate(props.date)}</p>
+          <p>{converToDate(props.date).toLowerCase()}</p>
         </div>
       </div>
     </div>
