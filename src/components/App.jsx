@@ -143,31 +143,34 @@ function App() {
           </div>
         </form>
       </div>
-      <Results
+      {/* <Results
         city="a"
         units="metric"
         windSpeed={1.0}
-        windDirection={165}
+        windDirection={90}
         temp={-19.5985}
         feelsLike={-16.19554}
         mainCondition="a"
         conditionDesc="broken clouds"
         conditionIcon="02d"
       />
-      <Clock time={resultsState.time} city={resultsState.city} date={resultsState.date} />
-      {/* {resultsState.city && (
-        <Results
-          city={resultsState.city}
-          units={resultsState.units}
-          windSpeed={resultsState.windSpeed}
-          windDirection={resultsState.windDirection}
-          temp={resultsState.temp}
-          feelsLike={resultsState.feelsLike}
-          mainCondition={resultsState.mainCondition}
-          conditionDesc={resultsState.conditionDesc}
-          conditionIcon={resultsState.conditionIcon}
-        />
-      )} */}
+      <Clock time={"13:58:39 PM"} city={"New York"} date={1686236400} /> */}
+      {resultsState.city && (
+        <>
+          <Results
+            city={resultsState.city}
+            units={resultsState.units}
+            windSpeed={resultsState.windSpeed}
+            windDirection={resultsState.windDirection}
+            temp={resultsState.temp}
+            feelsLike={resultsState.feelsLike}
+            mainCondition={resultsState.mainCondition}
+            conditionDesc={resultsState.conditionDesc}
+            conditionIcon={resultsState.conditionIcon}
+          />
+          <Clock time={resultsState.time} city={resultsState.city} date={resultsState.date} />
+        </>
+      )}
     </>
   );
 }

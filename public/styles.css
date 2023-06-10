@@ -5,7 +5,7 @@ form {
 
 .grid-input-container {
     display: grid;
-    grid-template: 1fr 1fr / 1fr 1fr;
+    grid-template: 1fr 0.5fr / 1fr 1fr;
     width: 50%;
     gap: 5px;
     font-family: Montserrat, sans-serif;
@@ -31,7 +31,7 @@ input {
     border: none;
     color: #DDE6ED;
     font-size: 2rem;
-    height: 50%;
+    height: 100%;
     transition: 0.3s;
     width: 100%;
 }
@@ -102,11 +102,12 @@ input::placeholder {
 .results-top {
     display: flex;
     justify-content: center;
+    margin-top: 2rem;
 }
 
 .grid-container {
     font-family: 'Major Mono Display', monospace;
-    margin-top: 2rem;
+
     width: 90%;
     height: 400px;
     display: grid;
@@ -126,8 +127,6 @@ input::placeholder {
 .grid-container>div:hover {
     background-color: #dde6eda8;
 }
-
-.grid-container p {}
 
 .info-title {
     font-size: 3rem;
@@ -163,8 +162,7 @@ input::placeholder {
 }
 
 .wind-dir-cell>p {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 5px;
 }
 
 .wind-directions {
@@ -173,7 +171,7 @@ input::placeholder {
 }
 
 .wind-text {
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .wind-numeral {
@@ -198,7 +196,7 @@ input::placeholder {
 .temp-feels-text-cell {
     grid-row: 2/4;
     /* grid-area: 2/8/4/9; */
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .temp-feels-temp-cell {
@@ -224,7 +222,7 @@ input::placeholder {
 
 .condition-condition-cell {
     grid-area: 2/9/3/13;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .condition-icon-cell {
@@ -238,7 +236,7 @@ input::placeholder {
 .results-bottom {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 2rem;
 }
 
 .grid-container-clock {
@@ -256,17 +254,111 @@ input::placeholder {
     justify-content: center;
     align-items: center;
     font-size: 3rem;
+    transition: 0.3s;
+}
+
+.grid-container-clock>div:hover {
+    background-color: #dde6eda8;
 }
 
 .clock-time {
     grid-column: span 2;
     border-radius: 20px 20px 0 0;
+    letter-spacing: 2rem;
+    font-family: "space mono";
+    font-size: 5rem !important;
 }
 
 .clock-city {
+    font-family: 'Major Mono Display', monospace;
     border-radius: 0 0 0 20px;
 }
 
 .clock-date {
+    font-family: 'Major Mono Display', monospace;
     border-radius: 0 0 20px 0;
+}
+
+@media (max-width: 1400px) {
+
+    .grid-input-container {
+        width: 80%;
+    }
+
+    .bg-image {
+        height: 200vh;
+    }
+
+    .grid-container {
+        width: 80%;
+        grid-template-rows: repeat(15, 1fr);
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        height: 1000px;
+    }
+
+    .temp-title-cell {
+
+        grid-area: 1/1/2/5;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .temp-temp-cell {
+        grid-area: 2/1/6/4;
+        border-radius: 0 0 0 20px;
+    }
+
+    .temp-feels-text-cell {
+        grid-area: 2/4/4/5;
+    }
+
+    .temp-feels-temp-cell {
+        grid-area: 4/4/6/5;
+        border-radius: 0 0 20px 0;
+    }
+
+    .condition-title-cell {
+        margin-top: 5px;
+        grid-area: 6/1/7/5;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .condition-condition-cell {
+        grid-area: 7/1/8/5;
+    }
+
+    .condition-icon-cell {
+        grid-area: 8/1/11/5;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .wind-title-cell {
+        margin-top: 5px;
+        grid-area: 11/1/12/5;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .wind-speed-1-cell {
+        grid-area: 12/1/14/3;
+    }
+
+    .wind-speed-2-cell {
+        grid-area: 12/3/14/5;
+    }
+
+    .wind-speed-3-cell {
+        grid-area: 12/1/14/5;
+    }
+
+    .wind-dir-cell {
+        grid-area: 14/1/16/5;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .grid-container-clock {
+        width: 80%;
+    }
+
+    .clock-time {
+        letter-spacing: -2px;
+    }
 }
