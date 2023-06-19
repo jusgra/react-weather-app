@@ -26,6 +26,8 @@ The website is very simple to use!
 
 ![image](https://github.com/jusgra/react-weather-app/assets/91288874/11bdbc14-76f9-4809-a6e4-a9c3881f1a0f)
 
+![image](https://github.com/jusgra/react-weather-app/assets/91288874/e122c3c6-668b-4f3e-af65-dd6792bde637)
+
 ![image](https://github.com/jusgra/react-weather-app/assets/91288874/bc727cda-6fde-47f5-9608-8c9abdad8fdc)
 
 
