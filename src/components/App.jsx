@@ -185,7 +185,8 @@ function getLocalTime(timezone) {
 }
 
 function urlConstruct(city, unit) {
-  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiKey = "07114249c56ab90d33cd37ba77f078b5";
+  //const apiKey = process.env.REACT_APP_API_KEY;
   let urlFinal = "http://api.openweathermap.org/data/2.5/forecast?q=";
   urlFinal += city + "&appid=" + apiKey + "&units=" + unit;
 
