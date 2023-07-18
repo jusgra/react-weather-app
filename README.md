@@ -1,12 +1,12 @@
 <div align="center">
   <h1>
-    Weather find <a href="https://jusgra.github.io/react-weather-app/">website </a>🔍
+    Weather find 🔍 <a href="https://jusgra.github.io/react-weather-app/">website </a>
   </h1>
 </div>
 
 ### This project was created from a simple idea, to check current weather and conditions of the cities you wish ☀️
 
-It was built mainly using **React.js**, and it is my first ever project in which I try to show my skills and create some portfolio on my repository that I could show as a Front-End programmer. The concept is very simple, API call and showing the response results. It is a genuine project I built and thought by myself. I designed the layouts and tried to realize the main idea/concept. Also, I tried to implement a responsive layouts, that can size regarding the device you are using.
+It was built mainly using **React.js**, and it is my first ever project in which I try to show my skills and create some portfolio on my repository that I could show as a Front-End programmer. The concept is very simple, API call and showing the response results. It is a genuine project I built and thought by myself. I designed the layouts and tried to realize the main idea/concept. Also, I tried to implement a responsive layout, that can size regarding the device you are using.
 
 I used **_state_**, **_ref_**, and **_effect_** Hooks in order to show results in a dynamic way, also conditional rendering and component tree structure.
 
